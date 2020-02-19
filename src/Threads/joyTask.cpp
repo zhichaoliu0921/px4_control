@@ -201,7 +201,7 @@ void *joyTask(void *threadID){
 		    	PVA_ref.Acc.accel.linear = SetVector3(0, 0, 0);
 		    	PVA_ref.thrustRef.data = 0.0;
 		    pthread_mutex_unlock(&mutexes.PVAref);
-		    RPY_ref.z = getHeadingFromQuat(localOdom.pose.pose.orientation);
+            RPY_ref.z = getHeadingFromQuat(localOdom.pose.pose.orientation);
 		}
 		else{
 			pthread_mutex_lock(&mutexes.PVAref);

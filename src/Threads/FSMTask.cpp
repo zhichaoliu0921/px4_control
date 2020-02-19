@@ -114,7 +114,7 @@ void *FSMTask(void *threadID){
 	        if( localPX4state.mode != "OFFBOARD" &&
 	            (ros::Time::now() - last_request > ros::Duration(1.0))){
 	            if( SetModeClient.call(ModeMsg) &&
-	                ModeMsg.response.success){
+	                ModeMsg.response.mode_sent){
 	                ROS_INFO("Offboard enabled!");
 	            }
 	            last_request = ros::Time::now();

@@ -1,0 +1,63 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/zhichao/catkin_ws/src/px4_control/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_534cb/fast && /usr/bin/make -f CMakeFiles/cmTC_534cb.dir/build.make CMakeFiles/cmTC_534cb.dir/build
+make[1]: Entering directory '/home/zhichao/catkin_ws/src/px4_control/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_534cb.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_534cb.dir/src.c.o   -c /home/zhichao/catkin_ws/src/px4_control/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_534cb
+/home/zhichao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_534cb.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_534cb.dir/src.c.o  -o cmTC_534cb 
+CMakeFiles/cmTC_534cb.dir/src.c.o: In function `main':
+src.c:(.text+0x3c): undefined reference to `pthread_create'
+src.c:(.text+0x48): undefined reference to `pthread_detach'
+src.c:(.text+0x59): undefined reference to `pthread_join'
+src.c:(.text+0x6d): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_534cb.dir/build.make:86: recipe for target 'cmTC_534cb' failed
+make[1]: *** [cmTC_534cb] Error 1
+make[1]: Leaving directory '/home/zhichao/catkin_ws/src/px4_control/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_534cb/fast' failed
+make: *** [cmTC_534cb/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/zhichao/catkin_ws/src/px4_control/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_700fa/fast && /usr/bin/make -f CMakeFiles/cmTC_700fa.dir/build.make CMakeFiles/cmTC_700fa.dir/build
+make[1]: Entering directory '/home/zhichao/catkin_ws/src/px4_control/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_700fa.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_700fa.dir/CheckFunctionExists.c.o   -c /home/zhichao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.c
+Linking C executable cmTC_700fa
+/home/zhichao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_700fa.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_700fa.dir/CheckFunctionExists.c.o  -o cmTC_700fa -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_700fa.dir/build.make:86: recipe for target 'cmTC_700fa' failed
+make[1]: *** [cmTC_700fa] Error 1
+make[1]: Leaving directory '/home/zhichao/catkin_ws/src/px4_control/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_700fa/fast' failed
+make: *** [cmTC_700fa/fast] Error 2
+
+
+

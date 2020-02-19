@@ -5,7 +5,7 @@ void stateCallback(const mavros_msgs::State::ConstPtr &msg){
 	pthread_mutex_lock(&mutexes.PX4state);
 		PX4state = *msg;
 	pthread_mutex_unlock(&mutexes.PX4state);
-	// std::cout << state.header.seq << std::endl;
+	 //std::cout << PX4state.header.seq << std::endl;
 }
 
 //Get data from odometry topic

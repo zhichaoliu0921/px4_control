@@ -62,10 +62,14 @@ add_executable(px4_control_node
              src/PosControl/PosControl.cpp
              src/pevents/pevents.cpp
              src/Services/services.cpp
-             src/structs.cpp)
+             src/structs.cpp
+			 )
 target_link_libraries(px4_control_node ${catkin_LIBRARIES})
 
 #This makes sure that messages and services are compiled before the rest
 add_dependencies(px4_control_node px4_control_generate_messages_cpp)
 add_dependencies(px4_control_node ${catkin_EXPORTED_TARGETS})
 
+add_executable(pub_traj
+				src/pub_traj.cpp)
+target_link_libraries(pub_traj ${catkin_LIBRARIES})

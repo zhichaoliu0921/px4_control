@@ -35,7 +35,7 @@ void updateErrorPID3(PID_3DOF &PID,
 	PID.feedForward = feedForward;
 	PID.e_prop = e_prop;
 	PID.e_deriv = e_deriv;
-	PID.e_integ = PID.e_integ+(e_prop*dt); //e_integ = e_integ + e_prop*dt
+	PID.e_integ = PID.e_integ + (e_prop*dt); //e_integ = e_integ + e_prop*dt
 
 	//Saturate integral error between lower and upper bounds
 	for (int i = 0; i < 3; i++){
